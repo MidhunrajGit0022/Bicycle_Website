@@ -263,6 +263,7 @@ router.put('/updatecart/:productId', authToken, async (req, res) => {
 router.post('/buyproduct', authToken, async (req, res) => {
   try {
     userid = req.token.userId;
+    console.log(userid);
     const { id, quantity, selectedSize } = req.body.state;
     const cardnouser = req.body.cardno;
     const cvvuser = req.body.cvv;
@@ -271,6 +272,7 @@ router.post('/buyproduct', authToken, async (req, res) => {
       return res.status(404).json({ error: 'Contact not found' });
     }
     const contact = contactfetch.contact;
+    console.log(contact);
     const bankData = await BankModel.findOne({ contact: contact });
     if (!bankData) {
       return res.status(404).json({ error: 'Bank data not found' });
