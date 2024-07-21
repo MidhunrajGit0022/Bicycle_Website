@@ -65,6 +65,20 @@ function HomeNavbar({ name, ...props }){
   const AllBuypass = () => {
     navigate('/AllCheckout', { state: [ ...fetchcart]});
   };
+
+
+  const Logout = async () =>{
+    try {
+     const response = await axios.delete('/logout');
+      console.log('Logged out successfully');
+      alert(response.data.message);
+      navigate('/login');
+      
+  } catch (error) {
+      console.error('Logout failed:', error);
+      alert('Logout failed');
+  }
+  }
     return(
       <div>
         {/* <Navbar expand="lg" style={navcolor} className="fixed-top"> */}
@@ -144,7 +158,7 @@ function HomeNavbar({ name, ...props }){
               </Nav>
               <Nav>
                 <Form className="d-flex justify-content-center">
-                  <Button variant="outline-light" className='btn rounded-0 navhome d-flex ms-4'>LOGOUT</Button>
+                  <Button variant="outline-light" className='btn rounded-0 navhome d-flex ms-4' onClick={Logout}>LOGOUT</Button>
                 </Form>
               </Nav>
             </Navbar.Collapse>

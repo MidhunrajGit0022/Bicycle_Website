@@ -12,13 +12,13 @@ const { access } = require('fs');
 
 async function generateAccessToken(userId) {
     const accessToken = await jwt.sign({ userId }, process.env.JWTTOKEN, {
-        expiresIn: "10s",
+        expiresIn: "1h",
     });
     return accessToken;
 }
 async function generateRefreshToken(userId) {
     const refreshToken = await jwt.sign({ userId }, process.env.REFRESHTOKEN, {
-        expiresIn: "5m",
+        expiresIn: "5h",
     });
     return refreshToken;
 }
@@ -66,6 +66,18 @@ router.post("/login", async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+
+router.delete('/logout', async (req, res) => {
+    try {
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
+        res.status(200).json({ message: 'Logged out successfully' });
+    } catch (error) {
+        console.error('Logout failed:', error);
+        res.status(500).json({ error: 'Logout failed' });
     }
 });
 

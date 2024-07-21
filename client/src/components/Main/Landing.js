@@ -1,10 +1,12 @@
 import React from "react";
-import { Route, Link, } from 'react-router-dom';
-import { Button, Nav, Container, Navbar, NavDropdown, Image, Form, Col, Row } from 'react-bootstrap';
-import '../../style.css'
-import { Label } from 'semantic-ui-react'
+import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
+import { Label } from 'semantic-ui-react';
+import '../../style.css';
 
 function Landing() {
+
+
+
   return (
     <>
     <div className="bannerbg">

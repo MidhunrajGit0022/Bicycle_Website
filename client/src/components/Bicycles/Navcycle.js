@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Image, Nav, Navbar, Offcanvas, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { Link, useLocation,useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { selectCartTerm } from '../../redux/cartstore';
 import '../../style.css';
-import { useDispatch } from 'react-redux';
 
 function NavBicycle({ name, ...props }) {
   const navigate = useNavigate();
@@ -74,6 +73,19 @@ function NavBicycle({ name, ...props }) {
     navigate('/AllCheckout', { state: [ ...fetchcart]});
   };
 
+
+  const Logout = async () =>{
+    try {
+     const response = await axios.delete('/logout');
+      console.log('Logged out successfully');
+      alert(response.data.message);
+      navigate('/login');
+      
+  } catch (error) {
+      console.error('Logout failed:', error);
+      alert('Logout failed');
+  }
+  }
   
 
   return (
@@ -157,7 +169,7 @@ function NavBicycle({ name, ...props }) {
               </Nav>
             <Nav>
               <Form className="d-flex justify-content-center">
-                <Button variant="outline-light" className='btn rounded-0 navhome d-flex ms-4'>LOGOUT</Button>
+                <Button variant="outline-light" className='btn rounded-0 navhome d-flex ms-4' onClick={Logout}>LOGOUT</Button>
               </Form>
             </Nav>
           </Navbar.Collapse>

@@ -1,7 +1,5 @@
-import react,{useState,useEffect} from 'react'
-import '../style.css'
-import { Button,Nav,Container,Navbar,NavDropdown,Image,Form,Offcanvas,Row,Col } from 'react-bootstrap';
-import { Route, Link } from 'react-router-dom';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import '../style.css';
 import Dashnav from './Dashnav';
 import Footer from './Main/Footer';
 

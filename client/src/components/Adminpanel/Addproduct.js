@@ -1,11 +1,10 @@
-import react, { useState, useEffect } from 'react'
-import './admin.css'
-import { Button, Nav, Container, Navbar, NavDropdown, Dropdown, Image, Form, Offcanvas, Row, Col } from 'react-bootstrap';
-import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import Topnav from './Topnav';
-import Footeradmin from './Footeradmin';
+import { useState } from 'react';
+import { Button, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import './admin.css';
+import Footeradmin from './Footeradmin';
+import Topnav from './Topnav';
 
 
 export default function Addproduct() {
